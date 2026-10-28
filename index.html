@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS 5.5 → 6.5+ · THPT Trần Phú</title>
+<style>
+/* ========== RESET & BIẾN TOÀN CỤC ========== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root{
+  --navy:#0b2545;
+  --navy-light:#13315c;
+  --blue:#1b4f8a;
+  --gold:#d4a017;
+  --gold-soft:#f0c75e;
+  --bg:#f4f6fa;
+  --card:#ffffff;
+  --text:#1e2a3a;
+  --muted:#5f6c7b;
+  --border:#dde3ec;
+  --success:#1e7b4c;
+  --warning:#b85c00;
+  --danger:#b02a2a;
+  --radius:14px;
+  --shadow:0 4px 18px rgba(11,37,69,.08);
+}
+body{
+  font-family:'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.6;
+}
+
+/* ========== THẺ THẦY TRUNG – BO TRÒN, GÓC TRÊN PHẢI ========== */
+.designer-badge{
+  position:fixed; top:16px; right:16px; z-index:9999;
+  background:linear-gradient(135deg, #f0c75e 0%, #d4a017 55%, #b8860b 100%);
+  border-radius:22px;
+  padding:11px 22px 11px 12px;
+  box-shadow:0 10px 28px rgba(180,134,11,.38), 0 2px 8px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.35);
+  display:flex; align-items:center; gap:13px;
+  border:2px solid rgba(255,255,255,.45);
+  transition:transform .25s ease, box-shadow .25s ease;
+  cursor:default;
+}
+.designer-badge:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 32px rgba(180,134,11,.45), 0 3px 10px rgba(0,0,0,.15);
+}
+.designer-badge .avatar{
+  width:48px; height:48px; border-radius:50%;
+  background:linear-gradient(135deg, #0b2545 0%, #1b4f8a 100%);
+  color:#f0c75e; display:flex; align-items:center; justify-content:center;
+  font-weight:900; font-size:1.15rem; letter-spacing:.5px;
+  box-shadow:inset 0 0 0 2.5px rgba(240,199,94,.75), 0 3px 8px rgba(0,0,0,.2);
+  flex-shrink:0;
+}
+.designer-badge .info{ line-height:1.35; color:#0b2545; }
+.designer-badge .name{
+  font-weight:900; font-size:.94rem; display:block;
+  letter-spacing:.2px; white-space:nowrap;
+}
+.designer-badge .school{
+  font-weight:700; font-size:.72rem; opacity:.8; display:block;
+  letter-spacing:.3px; text-transform:uppercase;
+}
+.designer-badge .phone{
+  font-size:.78rem; font-weight:800; color:#0b2545;
+  display:inline-block; margin-top:1px;
+}
+
+/* ========== HEADER ========== */
+header{
+  background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 55%, #1b3a6b 100%);
+  color:#fff; padding:32px 20px 34px;
+  padding-right:300px; /* nhường chỗ badge */
+}
+header h1{ font-size:1.7rem; letter-spacing:-.3px; }
+header h1 span{ color:var(--gold-soft); }
+header p{ opacity:.82; font-size:.92rem; margin-top:6px; max-width:760px; }
+
+/* ========== THANH ĐIỀU HƯỚNG ========== */
+nav.tabs{
+  position:sticky; top:0; z-index:800;
+  background:#fff; border-bottom:2px solid var(--border);
+  display:flex; flex-wrap:wrap; gap:2px;
+  padding:0 12px; box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+nav.tabs button{
+  border:none; background:transparent; cursor:pointer;
+  padding:13px 18px; font-weight:700; font-size:.86rem;
+  color:var(--muted); border-bottom:3px solid transparent;
+  transition:.2s; font-family:inherit;
+}
+nav.tabs button:hover{ color:var(--navy); background:#f0f4fa; }
+nav.tabs button.active{ color:var(--navy); border-bottom-color:var(--gold); }
+
+/* ========== LAYOUT CHUNG ========== */
+main{ max-width:1180px; margin:0 auto; padding:22px 16px 80px; }
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; animation:fadeUp .3s ease; }
+@keyframes fadeUp{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+.card{
+  background:var(--card); border-radius:var(--radius);
+  box-shadow:var(--shadow); border:1px solid var(--border);
+  padding:20px 22px; margin-bottom:18px;
+}
+.card h2{ font-size:1.15rem; color:var(--navy); margin-bottom:10px; }
+.card h3{ font-size:1rem; color:var(--blue); margin:14px 0 6px; }
+.muted{ color:var(--muted); font-size:.86rem; }
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+@media(max-width:960px){
+  .grid-2,.grid-3,.grid-4{ grid-template-columns:1fr; }
+  header{ padding-right:20px; padding-top:100px; }
+  .designer-badge{
+    position:relative; top:auto; right:auto;
+    border-radius:0 0 22px 22px; width:100%;
+    justify-content:center; border-radius:0;
+    border-left:none; border-right:none; border-top:none;
+  }
+}
+
+/* ========== HERO ĐĂNG KÝ – ẤM ÁP, THÂN THIỆN ========== */
+.reg-hero{
+  background:linear-gradient(135deg, #fff8e1 0%, #fef3c7 50%, #fde68a 100%);
+  border:3px solid var(--gold);
+  border-radius:20px;
+  padding:24px 28px;
+  margin-bottom:24px;
+  box-shadow:0 8px 24px rgba(212,160,23,.22), 0 2px 8px rgba(0,0,0,.05);
+  position:relative;
+  overflow:hidden;
+}
+.reg-hero::before{
+  content:'💌 NHẮC NHỞ';
+  position:absolute; top:16px; right:-38px;
+  background:var(--warning); color:#fff;
+  padding:5px 50px; font-weight:900; font-size:.72rem;
+  letter-spacing:1px; transform:rotate(35deg);
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+.reg-hero-header{ display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+.reg-hero-icon{
+  width:54px; height:54px; border-radius:16px;
+  background:linear-gradient(135deg, var(--navy), var(--blue));
+  color:var(--gold-soft); display:flex; align-items:center; justify-content:center;
+  font-size:1.7rem; flex-shrink:0;
+  box-shadow:0 4px 12px rgba(11,37,69,.25);
+}
+.reg-hero h2{
+  font-size:1.2rem; color:var(--navy); margin:0;
+  letter-spacing:-.2px;
+}
+.reg-hero .reg-sub{
+  font-size:.85rem; color:#7a5d00; margin-top:3px; font-weight:600;
+}
+.reg-form{
+  display:grid; grid-template-columns:2fr 1fr 2fr auto;
+  gap:12px; align-items:end;
+}
+@media(max-width:760px){ .reg-form{ grid-template-columns:1fr 1fr; } }
+@media(max-width:520px){ .reg-form{ grid-template-columns:1fr; } }
+.reg-field label{
+  display:block; font-weight:800; font-size:.74rem;
+  color:var(--navy); text-transform:uppercase;
+  letter-spacing:.6px; margin-bottom:5px;
+}
+.reg-field input{
+  width:100%; padding:11px 14px;
+  border:2px solid #e0c46a; border-radius:10px;
+  font-family:inherit; font-size:.9rem; background:#fffef8;
+  transition:.2s; font-weight:600;
+}
+.reg-field input:focus{
+  outline:none; border-color:var(--navy);
+  box-shadow:0 0 0 4px rgba(212,160,23,.25);
+}
+.reg-hero .save-btn{
+  padding:12px 26px; background:var(--navy); color:#fff;
+  border:none; border-radius:10px; font-weight:900; font-size:.88rem;
+  cursor:pointer; font-family:inherit; transition:.2s;
+  box-shadow:0 4px 12px rgba(11,37,69,.3);
+  white-space:nowrap;
+}
+.reg-hero .save-btn:hover{ background:var(--blue); transform:translateY(-1px); }
+.reg-status{
+  grid-column:1/-1; font-size:.84rem; font-weight:800;
+  padding:8px 14px; border-radius:8px; display:none;
+}
+.reg-status.ok{ display:block; background:#d4edda; color:#155724; border-left:4px solid var(--success); }
+.reg-status.err{ display:block; background:#fff3cd; color:#856404; border-left:4px solid var(--warning); }
+
+/* ========== NÚT ========== */
+.btn{
+  display:inline-block; padding:10px 20px; border-radius:9px;
+  border:none; cursor:pointer; font-weight:700; font-size:.85rem;
+  font-family:inherit; transition:.2s; text-decoration:none;
+}
+.btn-primary{ background:var(--navy); color:#fff; }
+.btn-primary:hover{ background:var(--blue); }
+.btn-gold{ background:var(--gold); color:var(--navy); }
+.btn-gold:hover{ background:var(--gold-soft); }
+.btn-outline{ background:transparent; border:2px solid var(--navy); color:var(--navy); }
+.btn-outline:hover{ background:var(--navy); color:#fff; }
+.btn-sm{ padding:6px 14px; font-size:.8rem; }
+.btn:disabled{ opacity:.5; cursor:not-allowed; }
+
+/* ========== PROGRESS / THỐNG KÊ ========== */
+.stat-row{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:16px; }
+.stat-box{
+  flex:1 1 150px; background:#fff; border:1px solid var(--border);
+  border-radius:12px; padding:14px 16px; text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.03);
+}
+.stat-box .num{ font-size:1.6rem; font-weight:900; color:var(--navy); line-height:1.2; }
+.stat-box .lbl{ font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }
+.band-badge{
+  display:inline-block; padding:4px 14px; border-radius:20px;
+  font-weight:900; font-size:1.1rem;
+}
+.band-5{ background:#fff3cd; color:#856404; }
+.band-6{ background:#d4edda; color:#155724; }
+.band-65{ background:#cce5ff; color:#004085; }
+
+/* ========== LỘ TRÌNH ========== */
+.phase{
+  border-left:5px solid var(--gold); padding:12px 16px;
+  background:#fbfcfe; border-radius:0 10px 10px 0; margin-bottom:12px;
+}
+.phase .week-label{ font-size:.75rem; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:.8px; }
+.phase h4{ color:var(--navy); margin:3px 0 5px; font-size:.95rem; }
+.phase ul{ margin-left:18px; font-size:.84rem; color:var(--muted); }
+
+/* ========== BÀI TẬP TƯƠNG TÁC ========== */
+.exercise{
+  background:#fafbfd; border:1px solid var(--border);
+  border-radius:12px; padding:16px; margin:12px 0;
+}
+.exercise .q-text{ font-weight:700; color:var(--navy); margin-bottom:8px; font-size:.9rem; }
+.exercise input[type="text"]{
+  padding:8px 12px; border:1.5px solid var(--border); border-radius:7px;
+  font-family:inherit; font-size:.88rem; width:100%; max-width:320px;
+}
+.exercise input[type="text"]:focus{ outline:none; border-color:var(--blue); }
+.exercise .feedback{ font-size:.83rem; font-weight:700; margin-top:6px; }
+.feedback.correct{ color:var(--success); }
+.feedback.wrong{ color:var(--danger); }
+.feedback.info{ color:var(--warning); }
+.timer-display{
+  font-family:'Courier New', monospace; font-size:1.3rem; font-weight:900;
+  color:var(--navy); background:#eef3fb; display:inline-block;
+  padding:4px 16px; border-radius:8px; margin-bottom:10px;
+}
+.word-count{ font-size:.8rem; color:var(--muted); }
+
+/* ========== BẢNG ========== */
+table{ width:100%; border-collapse:collapse; font-size:.83rem; }
+th,td{ padding:9px 11px; text-align:left; border-bottom:1px solid var(--border); }
+th{ background:#eef3fb; color:var(--navy); font-weight:800; font-size:.78rem; text-transform:uppercase; letter-spacing:.3px; }
+tr:hover td{ background:#f8faff; }
+
+/* ========== ĐỀ THI THỬ ========== */
+.mock-test-tabs{ display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+.mock-test-tabs button{
+  padding:9px 18px; border:2px solid var(--border); background:#fff;
+  border-radius:9px; cursor:pointer; font-weight:700; font-size:.84rem;
+  font-family:inherit; transition:.2s;
+}
+.mock-test-tabs button.active{ border-color:var(--gold); background:#fffbea; color:var(--navy); }
+
+/* ========== BÀI MẪU ========== */
+.sample-essay{
+  background:#fbf8f0; border-left:4px solid var(--gold);
+  padding:16px 18px; border-radius:0 10px 10px 0; margin:12px 0;
+  font-size:.87rem; line-height:1.75;
+}
+.sample-essay .band-tag{
+  display:inline-block; background:var(--navy); color:#fff;
+  padding:2px 10px; border-radius:12px; font-size:.72rem; font-weight:800;
+  margin-bottom:8px;
+}
+.note{ background:#eef7f1; border-left:4px solid var(--success); padding:10px 14px; border-radius:0 8px 8px 0; font-size:.83rem; margin:8px 0; }
+
+/* ========== NHẮC NHỞ / CHECKLIST ========== */
+.reminder{
+  background:linear-gradient(135deg,#fffbea,#fff8e1);
+  border:1.5px dashed var(--gold); border-radius:12px;
+  padding:14px 18px; margin-bottom:16px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+}
+.reminder strong{ color:var(--warning); }
+
+/* ========== FOOTER ========== */
+footer{
+  text-align:center; padding:28px 16px; font-size:.8rem;
+  color:var(--muted); border-top:1px solid var(--border);
+  margin-top:30px;
+}
+
+/* ========== UTILITY ========== */
+.mt-8{ margin-top:8px; } .mt-12{ margin-top:12px; } .mb-8{ margin-bottom:8px; }
+.tag{ display:inline-block; background:#eef3fb; color:var(--blue); padding:2px 10px; border-radius:12px; font-size:.72rem; font-weight:700; margin-right:4px; }
+</style>
+</head>
+<body>
+
+<!-- ========== THẺ THẦY TRUNG – BO TRÒN, GÓC TRÊN PHẢI ========== -->
+<div class="designer-badge" title="Thiết kế bởi Thầy Nguyễn Hữu Trung">
+  <div class="avatar">T</div>
+  <div class="info">
+    <span class="name">Thầy Nguyễn Hữu Trung</span>
+    <span class="school">THPT Trần Phú</span>
+    <span class="phone">📞 0964848989</span>
+  </div>
+</div>
+
+<header>
+  <h1>IELTS <span>5.5 → 6.5+</span> · Lộ trình cá nhân hoá</h1>
+  <p>Dành cho học sinh THPT Trần Phú · Tích hợp 4 phòng luyện kỹ năng tương tác, đề thi thử tổng hợp, kho bài mẫu band cao và hệ thống thống kê điểm theo Họ tên – Lớp – Trường.</p>
+</header>
+
+<nav class="tabs" id="mainTabs">
+  <button class="active" data-tab="dashboard">📊 Tổng quan & Thống kê</button>
+  <button data-tab="roadmap">🗺️ Lộ trình 8 tuần</button>
+  <button data-tab="listening">🎧 Nghe</button>
+  <button data-tab="speaking">🗣️ Nói</button>
+  <button data-tab="reading">📖 Đọc</button>
+  <button data-tab="writing">✍️ Viết</button>
+  <button data-tab="mocktests">📝 3 Đề thi thử tổng hợp</button>
+  <button data-tab="samples">🌟 Bài mẫu band cao</button>
+  <button data-tab="methods">💡 Phương pháp học</button>
+  <button data-tab="daily">📅 Luyện hàng ngày</button>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- TAB 1: DASHBOARD & THỐNG KÊ -->
+<!-- ============================================================ -->
+<section class="tab-panel active" id="tab-dashboard">
+
+  <!-- HERO ĐĂNG KÝ – LỜI NHẮC NHỞ LỊCH SỰ -->
+  <div class="reg-hero" id="regHero">
+    <div class="reg-hero-header">
+      <div class="reg-hero-icon">🎓</div>
+      <div>
+        <h2>BƯỚC 1 · Lưu lại thông tin học sinh</h2>
+        <div class="reg-sub">Bạn hãy dành ít phút lưu lại <strong>Họ tên – Lớp – Trường</strong> trước khi làm bài nhé! Thông tin này giúp thầy Trung theo dõi và đánh giá kết quả học tập của bạn.</div>
+      </div>
+    </div>
+    <div class="reg-form">
+      <div class="reg-field">
+        <label>👤 Họ và tên</label>
+        <input type="text" id="inpName" placeholder="Nguyễn Văn A" autocomplete="name">
+      </div>
+      <div class="reg-field">
+        <label>🏫 Lớp</label>
+        <input type="text" id="inpClass" placeholder="11A1" autocomplete="off">
+      </div>
+      <div class="reg-field">
+        <label>🏛️ Trường</label>
+        <input type="text" id="inpSchool" placeholder="THPT Trần Phú" value="THPT Trần Phú" autocomplete="organization">
+      </div>
+      <button class="save-btn" onclick="saveStudent()">💾 Lưu thông tin</button>
+      <div class="reg-status" id="regStatus"></div>
+    </div>
+  </div>
+
+  <div class="reminder" id="reminderBox">
+    <span>🔔 <strong>Nhắc nhở khoa học:</strong> Hãy luyện tập <strong>25–30 phút mỗi ngày</strong> và ôn lại từ vựng theo chu kỳ <strong>1 – 3 – 7 – 14 ngày</strong> (Spaced Repetition) để ghi nhớ sâu.</span>
+    <button class="btn btn-sm btn-gold" onclick="markTodayDone()">✅ Đã luyện hôm nay</button>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="num" id="statStreak">0</div><div class="lbl">🔥 Chuỗi ngày luyện</div></div>
+    <div class="stat-box"><div class="num" id="statTotalSessions">0</div><div class="lbl">📚 Tổng buổi luyện</div></div>
+    <div class="stat-box"><div class="num" id="statAvgBand">—</div><div class="lbl">🎯 Band ước tính</div></div>
+    <div class="stat-box"><div class="num" id="statWords">0</div><div class="lbl">📝 Từ vựng đã lưu</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>📈 Điểm theo kỹ năng</h2>
+      <table>
+        <thead><tr><th>Kỹ năng</th><th>Điểm gần nhất</th><th>Mục tiêu</th><th>Trạng thái</th></tr></thead>
+        <tbody id="skillTableBody">
+          <tr><td>🎧 Listening</td><td id="lastListening">—</td><td>6.5</td><td id="statusListening">—</td></tr>
+          <tr><td>🗣️ Speaking</td><td id="lastSpeaking">—</td><td>6.5</td><td id="statusSpeaking">—</td></tr>
+          <tr><td>📖 Reading</td><td id="lastReading">—</td><td>6.5</td><td id="statusReading">—</td></tr>
+          <tr><td>✍️ Writing</td><td id="lastWriting">—</td><td>6.5</td><td id="statusWriting">—</td></tr>
+        </tbody>
+      </table>
+      <p class="muted mt-8">Band tổng ước tính = trung bình cộng 4 kỹ năng (làm tròn 0.5).</p>
+    </div>
+
+    <div class="card">
+      <h2>📋 Đánh giá & Gợi ý</h2>
+      <div id="evaluationBox">
+        <p class="muted">Chưa có đủ dữ liệu. Hãy hoàn thành ít nhất một bài luyện ở mỗi kỹ năng để nhận đánh giá.</p>
+      </div>
+      <h3>🎯 Mục tiêu 6.5 cần gì?</h3>
+      <ul class="muted" style="font-size:.84rem; margin-left:18px;">
+        <li>Listening/Reading: đúng <strong>27–29/40</strong> câu (band 6.5).</li>
+        <li>Writing: Task Response đầy đủ, mạch lạc, ít lỗi ngữ pháp.</li>
+        <li>Speaking: nói trôi chảy, mở rộng ý, dùng từ linh hoạt.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🕒 Lịch sử luyện tập</h2>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>Thời gian</th><th>Kỹ năng</th><th>Hoạt động</th><th>Kết quả</th></tr></thead>
+        <tbody id="historyBody"><tr><td colspan="4" class="muted">Chưa có lịch sử.</td></tr></tbody>
+      </table>
+    </div>
+    <button class="btn btn-sm btn-outline mt-8" onclick="exportData()">⬇️ Xuất dữ liệu (JSON)</button>
+    <button class="btn btn-sm btn-outline mt-8" onclick="clearData()" style="border-color:var(--danger); color:var(--danger);">🗑️ Xoá toàn bộ dữ liệu</button>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 2: LỘ TRÌNH 8 TUẦN -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-roadmap">
+  <div class="card">
+    <h2>🗺️ Lộ trình 8 tuần: 5.5 → 6.5+</h2>
+    <p class="muted">Dựa trên khuyến nghị từ các trung tâm luyện thi: với nền 5.5, cần khoảng <strong>2–3 tháng (8–12 tuần)</strong> học tập có hệ thống, mỗi ngày 2–3 giờ, để đạt 6.5. Lộ trình dưới đây chia nhỏ theo từng giai đoạn, tập trung xử lý điểm yếu và luyện đề.</p>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="phase">
+        <div class="week-label">Giai đoạn 1 · Tuần 1–2</div>
+        <h4>Củng cố nền tảng & Chẩn đoán</h4>
+        <ul>
+          <li>Làm bài test đầu vào 4 kỹ năng để xác định band hiện tại và lỗ hổng.</li>
+          <li>Ôn ngữ pháp cốt lõi: thì, câu phức, mệnh đề quan hệ.</li>
+          <li>Xây dựng 300–400 từ vựng học thuật theo chủ đề (Education, Environment, Technology).</li>
+          <li>Làm quen format Listening 4 phần & Reading 3 dạng câu hỏi.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="week-label">Giai đoạn 2 · Tuần 3–4</div>
+        <h4>Phát triển kỹ năng Nghe – Đọc</h4>
+        <ul>
+          <li>Listening: luyện Section 1–2, tập trung bắt số liệu, tên riêng, dự đoán loại từ.</li>
+          <li>Reading: thành thạo Skimming & Scanning; luyện T/F/NG và Multiple Choice.</li>
+          <li>Mỗi ngày 1 bài đọc 20 phút + 1 bài nghe 15 phút.</li>
+          <li>Ghi chú lỗi sai theo dạng câu hỏi.</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="phase">
+        <div class="week-label">Giai đoạn 3 · Tuần 5–6</div>
+        <h4>Đẩy mạnh Nói – Viết (đầu ra)</h4>
+        <ul>
+          <li>Speaking: luyện Part 1 theo kỹ thuật AREA (Answer – Reason – Example – Alternative), mở rộng 5–6 câu/ý.</li>
+          <li>Writing: viết Task 2 dạng Opinion & Discussion, học paraphrase và cấu trúc đoạn.</li>
+          <li>Nhận phản hồi từ AI Coach (các phòng luyện bên dưới).</li>
+          <li>Học 10 cụm từ học thuật mỗi ngày và áp dụng ngay vào bài viết/nói.</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="week-label">Giai đoạn 4 · Tuần 7–8</div>
+        <h4>Thi thử & Tinh chỉnh</h4>
+        <ul>
+          <li>Làm <strong>3 đề thi thử tổng hợp</strong> (mục “3 Đề thi thử”) dưới áp lực thời gian.</li>
+          <li>Phân tích lỗi sai, xem lại transcript bài nghe và bài đọc.</li>
+          <li>Tối ưu chiến lược làm bài theo band mục tiêu 6.5.</li>
+          <li>Luyện tâm lý phòng thi, không bỏ sót câu.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>⏱️ Phân bổ thời gian mẫu mỗi ngày (2–3 giờ)</h2>
+    <table>
+      <thead><tr><th>Hoạt động</th><th>Thời lượng</th><th>Ghi chú</th></tr></thead>
+      <tbody>
+        <tr><td>Từ vựng (Spaced Repetition + Flashcards)</td><td>20–30 phút</td><td>Ôn từ cũ trước, học 10 từ mới</td></tr>
+        <tr><td>Listening (1 section + phân tích)</td><td>25–30 phút</td><td>Nghe → chấm → xem transcript → nghe lại</td></tr>
+        <tr><td>Reading (1 passage + chữa lỗi)</td><td>30–40 phút</td><td>Đặt timer 20 phút, sau đó phân tích</td></tr>
+        <tr><td>Writing hoặc Speaking</td><td>40–50 phút</td><td>So le ngày chẵn/lẻ</td></tr>
+        <tr><td>Nghe thụ động / Podcast</td><td>15–20 phút</td><td>BBC 6 Minute English, TED-Ed</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 3: NGHE -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-listening">
+  <div class="card">
+    <h2>🎧 Phòng luyện Nghe tương tác · AI Coach</h2>
+    <p class="muted">Luyện 4 phần thi Listening chuẩn IELTS với đồng hồ tính giờ và phản hồi từng câu. Dưới đây là bài luyện Section 1 mẫu.</p>
+    <div style="margin-bottom:10px;">
+      <div class="timer-display" id="listenTimer">10:00</div>
+      <button class="btn btn-sm btn-gold" onclick="startTimer('listenTimer',600)">▶ Bắt đầu tính giờ</button>
+      <button class="btn btn-sm btn-outline" onclick="resetTimer('listenTimer',600)">↺ Đặt lại</button>
+    </div>
+    <div class="exercise" id="listenExercise">
+      <div class="q-text">Section 1 — Gym Membership Enquiry · Form Completion (8 câu)</div>
+      <p class="muted mb-8">Dựa vào transcript, điền thông tin còn thiếu:</p>
+      <div id="listenQuestions"></div>
+      <button class="btn btn-primary mt-12" onclick="checkListening()">Nộp bài & Chấm điểm</button>
+      <div id="listenResult" class="mt-12"></div>
+    </div>
+    <details class="mt-12">
+      <summary style="cursor:pointer; font-weight:700; color:var(--blue);">📄 Xem Transcript (chỉ sau khi làm bài)</summary>
+      <div class="exercise mt-8" style="font-size:.84rem; line-height:1.8;">
+        <p><strong>Receptionist:</strong> Good morning, City Fitness Centre. How can I help you?</p>
+        <p><strong>Customer:</strong> Hi, I'd like to join the gym, please.</p>
+        <p><strong>Receptionist:</strong> Certainly. Can I take your name first?</p>
+        <p><strong>Customer:</strong> Yes, it's Marcus Webb. That's W-E-B-B.</p>
+        <p><strong>Receptionist:</strong> And your phone number?</p>
+        <p><strong>Customer:</strong> It's 07982 431 776.</p>
+        <p><strong>Receptionist:</strong> Do you have a preference for membership type? We offer standard, premium and...</p>
+      </div>
+    </details>
+  </div>
+  <div class="card">
+    <h2>📌 Mẹo Nghe từ 5.5 → 6.5</h2>
+    <ul class="muted" style="font-size:.85rem; margin-left:18px;">
+      <li><strong>Phân loại lỗi sai:</strong> “bỏ sót signal word”, “không nhận ra paraphrase”, “từ vựng场景 không quen” — rồi luyện bù đúng chỗ.</li>
+      <li><strong>Dictation + Shadowing:</strong> Nghe từng câu, chép lại, rồi đọc theo để quen nối âm và ngữ điệu.</li>
+      <li><strong>Dự đoán trước khi nghe:</strong> Đọc câu hỏi, xác định loại từ cần điền (số, tên, ngày, danh từ...).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 4: NÓI -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-speaking">
+  <div class="card">
+    <h2>🗣️ Phòng luyện Nói tương tác · AI Coach</h2>
+    <p class="muted">Luyện 3 phần thi Speaking với đề mẫu và đồng hồ tính giờ.</p>
+    <div class="grid-2">
+      <div>
+        <h3>Part 1 — Interview</h3>
+        <div class="exercise">
+          <div class="q-text">Where are you from?</div>
+          <p class="muted" style="font-size:.82rem;">Mục tiêu: 30–40 giây, trả lời 2–4 câu.</p>
+          <div class="timer-display" id="speakTimer1">00:40</div>
+          <button class="btn btn-sm btn-gold" onclick="startTimer('speakTimer1',40)">▶ Bắt đầu nói</button>
+          <button class="btn btn-sm btn-outline" onclick="recordSpeaking('Part 1')">🎙 Ghi nhận & Lưu</button>
+        </div>
+      </div>
+      <div>
+        <h3>Part 2 — Cue Card</h3>
+        <div class="exercise">
+          <div class="q-text">Describe a place you like to visit in your free time.</div>
+          <p class="muted" style="font-size:.82rem;">Chuẩn bị 1 phút · Nói 2 phút.</p>
+          <div class="timer-display" id="speakTimer2">02:00</div>
+          <button class="btn btn-sm btn-gold" onclick="startTimer('speakTimer2',120)">▶ Bắt đầu nói</button>
+          <button class="btn btn-sm btn-outline" onclick="recordSpeaking('Part 2')">🎙 Ghi nhận & Lưu</button>
+        </div>
+      </div>
+    </div>
+    <div class="note mt-12">
+      💡 <strong>Kỹ thuật AREA:</strong> Answer (trả lời trực tiếp) → Reason (lý do) → Example (ví dụ) → Alternative (so sánh/mở rộng). Áp dụng cho Part 1 và Part 3.
+    </div>
+  </div>
+  <div class="card">
+    <h2>📌 Mẹo Nói từ 5.5 → 6.5</h2>
+    <ul class="muted" style="font-size:.85rem; margin-left:18px;">
+      <li>Giảm từ đệm (um, uh, like); thay bằng <em>well, actually, you know</em> một cách có kiểm soát.</li>
+      <li>Mở rộng câu trả lời: không chỉ “Yes/No” mà thêm lý do và ví dụ.</li>
+      <li>Luyện phát âm trọng âm từ và ngữ điệu câu — yếu tố quan trọng để lên 6.5.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 5: ĐỌC -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-reading">
+  <div class="card">
+    <h2>📖 Phòng luyện Đọc tương tác · AI Coach</h2>
+    <p class="muted">Bài đọc mẫu “The History of Coffee” · dạng True/False/Not Given.</p>
+    <div style="margin-bottom:10px;">
+      <div class="timer-display" id="readTimer">10:00</div>
+      <button class="btn btn-sm btn-gold" onclick="startTimer('readTimer',600)">▶ Bắt đầu tính giờ</button>
+      <button class="btn btn-sm btn-outline" onclick="resetTimer('readTimer',600)">↺ Đặt lại</button>
+    </div>
+    <div class="exercise">
+      <div style="font-size:.87rem; line-height:1.8; background:#fff; padding:14px; border-radius:8px; border:1px solid var(--border);">
+        <p><strong>The History of Coffee</strong></p>
+        <p>Coffee is one of the most widely consumed beverages in the world, with over two billion cups drunk every day. According to a popular legend, coffee was discovered in Ethiopia in the 9th century by a goat herder named Kaldi. He noticed that his goats became unusually energetic after eating the red berries of a certain tree. Intrigued, Kaldi tried the berries himself and experienced a similar effect. From Ethiopia, coffee spread to the Arabian Peninsula. By the 15th century, coffee was being cultivated in Yemen and traded across the Middle East.</p>
+      </div>
+      <div id="readQuestions" class="mt-12"></div>
+      <button class="btn btn-primary mt-12" onclick="checkReading()">Nộp bài & Chấm điểm</button>
+      <div id="readResult" class="mt-12"></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>📌 Mẹo Đọc từ 5.5 → 6.5</h2>
+    <ul class="muted" style="font-size:.85rem; margin-left:18px;">
+      <li><strong>Skimming:</strong> đọc lướt 2–3 phút lấy ý chính mỗi đoạn trước khi làm câu hỏi.</li>
+      <li><strong>Scanning:</strong> gạch chân keyword trong câu hỏi, tìm từ đồng nghĩa/paraphrase trong bài.</li>
+      <li>Với T/F/NG: phân biệt rõ “False” (trái ngược) và “Not Given” (không có thông tin).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 6: VIẾT -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-writing">
+  <div class="card">
+    <h2>✍️ Phòng luyện Viết tương tác · AI Coach</h2>
+    <p class="muted">Viết bài và nhận phản hồi theo 4 tiêu chí chấm điểm IELTS Writing.</p>
+    <div class="exercise">
+      <div class="q-text">Task 2 · 40 phút · ≥ 250 từ</div>
+      <p style="font-size:.88rem; margin:8px 0;"><em>Some people believe that governments should invest more money in public transport than in building new roads. To what extent do you agree or disagree with this view?</em></p>
+      <div style="margin-bottom:10px;">
+        <div class="timer-display" id="writeTimer">40:00</div>
+        <button class="btn btn-sm btn-gold" onclick="startTimer('writeTimer',2400)">▶ Bắt đầu tính giờ</button>
+        <button class="btn btn-sm btn-outline" onclick="resetTimer('writeTimer',2400)">↺ Đặt lại</button>
+      </div>
+      <textarea id="writingInput" rows="10" placeholder="Viết bài của bạn tại đây..." style="width:100%; padding:12px; border:1.5px solid var(--border); border-radius:8px; font-family:inherit; font-size:.88rem; line-height:1.7; resize:vertical;" oninput="updateWordCount()"></textarea>
+      <div class="word-count" id="wordCount">Số từ: 0 / 250 tối thiểu</div>
+      <button class="btn btn-primary mt-8" onclick="submitWriting()">📤 Chấm bài & Lưu điểm</button>
+      <div id="writingResult" class="mt-12"></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>📌 Mẹo Viết từ 5.5 → 6.5</h2>
+    <ul class="muted" style="font-size:.85rem; margin-left:18px;">
+      <li><strong>Task Response:</strong> trả lời đúng trọng tâm, nêu rõ quan điểm ở mở bài, phát triển 2 thân bài có ví dụ.</li>
+      <li><strong>Coherence:</strong> dùng linking words đa dạng (Nevertheless, Consequently, In contrast...), mỗi đoạn một ý chính.</li>
+      <li><strong>Lexical Resource:</strong> paraphrase đề, tránh lặp từ; học collocations theo chủ đề.</li>
+      <li><strong>Grammar:</strong> kiểm tra lỗi thì, mạo từ, số ít/số nhiều trước khi nộp.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 7: 3 ĐỀ THI THỬ TỔNG HỢP -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-mocktests">
+  <div class="card">
+    <h2>📝 3 Đề thi thử tổng hợp (theo format chính thức)</h2>
+    <p class="muted">Mỗi đề gồm 4 kỹ năng. Nghe & Đọc có đáp án tự chấm; Viết & Nói được lưu để giáo viên/AI đánh giá. Các đề tham khảo từ nguồn Cambridge IELTS và IDP Official Practice Tests.</p>
+  </div>
+  <div class="mock-test-tabs" id="mockTabs"></div>
+  <div id="mockContent"></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 8: BÀI MẪU BAND CAO -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-samples">
+  <div class="card">
+    <h2>🌟 Kho bài mẫu Band 8.0+ để học hỏi</h2>
+    <p class="muted">Các bài mẫu được chọn lọc từ nguồn IDP, DOL English và IELTS-Blog, kèm chú thích vì sao đạt band cao.</p>
+  </div>
+
+  <div class="card">
+    <h2>✍️ Writing Task 2 — Band 8.0+ (Opinion Essay)</h2>
+    <div class="sample-essay">
+      <span class="band-tag">Band 8.0+</span>
+      <p><strong>Đề bài:</strong> <em>Opinions are divided on whether sponsorship from companies benefits the world of sports or whether it brings about more harm than good.</em></p>
+      <p>While I may acknowledge the logic behind the former view, I am still strongly in favour of the latter. Those who think that sponsorship is beneficial to sports may have several arguments. Chief among these is that such funding provides crucial financial support for athletes and sporting events. Many sports teams and competitions, especially in less popular disciplines, often struggle to survive without corporate sponsorship. For example, without company sponsors, events like the Olympics or World Cup might not be as grand or accessible to global audiences. Another point worth mentioning is that businesses often help raise sports’ profile through media. Their marketing campaigns can boost public interest and encourage more people to watch or participate in sports, which can be seen as a win-win situation for both parties.</p>
+      <p>Nevertheless, I still firmly believe that company advertising in sports can lead to several problems. One major issue is over-commercialisation. When profit becomes the main focus, the core values of sports may be overshadowed by branding and profit-driven decisions. For instance, sponsors might pressure teams to prioritise marketable players or influence game schedules rather than athlete wellbeing. Additionally, some companies involved in controversial industries — like alcohol, fast food, or gambling — may not align with the positive image that sports aim to promote. This can send mixed messages, especially to young fans who look up to athletes as role models.</p>
+      <p>In conclusion, although sponsorship brings financial benefits, the risks of over-commercialisation and conflicting values mean that it does more harm than good for the integrity of sport.</p>
+    </div>
+    <div class="note">
+      <strong>Vì sao đạt band 8?</strong> Lập luận cân bằng, paraphrase đề tốt, từ vựng học thuật chính xác (<em>over-commercialisation, profit-driven decisions, conflicting values</em>), cấu trúc đoạn mạch lạc, ít lỗi ngữ pháp.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🗣️ Speaking Part 2 — Band 8.0+ (Describe a famous person)</h2>
+    <div class="sample-essay">
+      <span class="band-tag">Band 8.0+</span>
+      <p><strong>Cue card:</strong> <em>Describe a famous person that you would like to meet.</em></p>
+      <p>One famous person I would really like to meet is Taylor Swift, who is widely regarded as one of the most influential singer–songwriters of this generation. She is well known for her storytelling lyrics and her remarkable ability to reinvent herself, something I’ve always admired. I first discovered her music back in high school when her songs were constantly playing on the radio. Over time, as I watched her interviews and documentaries, I realised that behind her global stardom is a thoughtful, hardworking, and surprisingly grounded individual. She stands out not only because of her chart-topping albums and numerous Grammy Awards but also due to the emotional depth she brings to her music. Her lyrics, which often reflect her personal experiences, create an authentic connection with listeners.</p>
+    </div>
+    <div class="note">
+      <strong>Điểm mạnh:</strong> mở rộng ý tự nhiên, dùng từ cảm xúc (<em>admired, grounded, authentic connection</em>), cấu trúc câu đa dạng, phát âm rõ ràng.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📖 Reading — Phân tích đáp án & paraphrase</h2>
+    <p class="muted">Khi chữa bài đọc, hãy lập bảng “Từ khóa trong câu hỏi → Từ đồng nghĩa trong bài” để nhớ lâu:</p>
+    <table>
+      <thead><tr><th>Câu hỏi</th><th>Bài đọc</th><th>Dạng paraphrase</th></tr></thead>
+      <tbody>
+        <tr><td>important</td><td>vital / crucial</td><td>đồng nghĩa</td></tr>
+        <tr><td>keep a check on</td><td>constantly monitoring</td><td>cụm từ → cụm từ</td></tr>
+        <tr><td>recognise fisheries</td><td>certifies fisheries</td><td>động từ đồng nghĩa</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 9: PHƯƠNG PHÁP HỌC -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-methods">
+  <div class="grid-2">
+    <div class="card">
+      <h2>🧠 Spaced Repetition (Lặp lại ngắt quãng)</h2>
+      <p class="muted" style="font-size:.85rem;">Ôn từ vựng theo chu kỳ <strong>1 – 3 – 7 – 14 – 30 ngày</strong>. Sử dụng flashcards (Leitner System) hoặc app có tính năng Spaced Repetition để tối ưu ghi nhớ.</p>
+      <div class="exercise mt-8">
+        <div class="q-text">Từ vựng hôm nay</div>
+        <input type="text" id="vocabInput" placeholder="Nhập từ/cụm từ mới..." style="max-width:100%;">
+        <button class="btn btn-sm btn-primary mt-8" onclick="addVocab()">+ Lưu vào kho</button>
+        <div id="vocabList" class="mt-8" style="font-size:.83rem;"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📓 Phương pháp “Reflection + Application”</h2>
+      <p class="muted" style="font-size:.85rem;">Đây là chìa khoá để thoát khỏi “mãi 5.5”: sau mỗi bài luyện, không chỉ xem đáp án mà phải <strong>phân loại lỗi sai</strong> và <strong>áp dụng lại kiến thức ngay</strong> vào bài mới.</p>
+      <ul class="muted" style="font-size:.84rem; margin-left:18px;">
+        <li><strong>Listening:</strong> lỗi do signal word? do paraphrase? do từ vựng场景?</li>
+        <li><strong>Reading:</strong> lỗi do定位 sai? do hiểu sai? do bỏ sót细节?</li>
+        <li><strong>Writing:</strong> lỗi do Task Response? do mạch lạc? do từ vựng? do ngữ pháp?</li>
+        <li><strong>Speaking:</strong> lỗi do phát âm? do ngập ngừng? do thiếu ý?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🎯 L-I-M Framework cho Reading & Listening</h2>
+    <p class="muted" style="font-size:.85rem;">Nhiều học sinh đạt 7.5+ chia sẻ dùng framework: <strong>L</strong>ocate (định vị thông tin) – <strong>I</strong>nterpret (hiểu & chuyển hoá paraphrase) – <strong>M</strong>atch (so khớp đáp án).</p>
+  </div>
+
+  <div class="card">
+    <h2>📱 Tài nguyên học tập được khuyến nghị</h2>
+    <ul class="muted" style="font-size:.85rem; margin-left:18px;">
+      <li><strong>Cambridge IELTS 15–19</strong> (PDF + Audio) — bộ đề chính thức sát nhất.</li>
+      <li><strong>IDP Official Practice Tests</strong> — bài test miễn phí có đáp án PDF cho cả 4 kỹ năng.</li>
+      <li><strong>BBC 6 Minute English, TED-Ed</strong> — luyện nghe thụ động mỗi ngày.</li>
+      <li><strong>IELTS-Blog, DOL English</strong> — kho bài mẫu Writing và Speaking band cao có chú thích.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TAB 10: LUYỆN HÀNG NGÀY -->
+<!-- ============================================================ -->
+<section class="tab-panel" id="tab-daily">
+  <div class="card">
+    <h2>📅 Bộ câu hỏi luyện hàng ngày</h2>
+    <p class="muted">Mỗi ngày một câu hỏi ngẫu nhiên từ kho 4 kỹ năng. Trả lời và lưu lại để theo dõi tiến bộ.</p>
+    <div class="exercise" id="dailyBox">
+      <div class="q-text" id="dailyQuestion">Đang tải câu hỏi...</div>
+      <div id="dailyAnswerArea"></div>
+      <button class="btn btn-gold mt-8" onclick="newDailyQuestion()">🔄 Câu hỏi khác</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>✅ Checklist nhắc luyện tập khoa học</h2>
+    <div id="checklistBox">
+      <label style="display:block; margin:8px 0;"><input type="checkbox" data-task="vocab"> Ôn 20 từ vựng (Spaced Repetition)</label>
+      <label style="display:block; margin:8px 0;"><input type="checkbox" data-task="listen"> Nghe 1 section + phân tích transcript</label>
+      <label style="display:block; margin:8px 0;"><input type="checkbox" data-task="read"> Đọc 1 passage + chữa lỗi paraphrase</label>
+      <label style="display:block; margin:8px 0;"><input type="checkbox" data-task="write"> Viết 1 đoạn Task 2 hoặc Speaking 2 phút</label>
+    </div>
+    <button class="btn btn-primary mt-8" onclick="saveChecklist()">Lưu tiến độ hôm nay</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>IELTS 5.5 → 6.5+ · THPT Trần Phú</strong> · Thiết kế bởi Thầy Nguyễn Hữu Trung · 0964848989</p>
+  <p style="margin-top:6px;">Dữ liệu được lưu cục bộ trên trình duyệt của bạn (localStorage). Không gửi lên máy chủ.</p>
+</footer>
+
+<script>
+/* ============================================================
+   0. BIẾN TOÀN CỤC & TIỆN ÍCH
+   ============================================================ */
+const STORAGE_KEY = 'ielts_tranphu_data_v2';
+
+let APP = {
+  student: { name:'', class:'', school:'THPT Trần Phú' },
+  history: [],
+  vocab: [],
+  checkins: [],
+  listeningScore: null,   // /40
+  readingScore: null,     // /40
+  writingBand: null,
+  speakingBand: null,
+  mockListenScore: null,  // /40 cho mock test
+  mockReadScore: null,
+};
+
+/* --- Đọc / ghi dữ liệu --- */
+function loadData(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      APP = Object.assign(APP, parsed);
+    }
+  }catch(e){ console.warn('Lỗi đọc dữ liệu:', e); }
+
+  // Khôi phục form
+  document.getElementById('inpName').value = APP.student.name || '';
+  document.getElementById('inpClass').value = APP.student.class || '';
+  document.getElementById('inpSchool').value = APP.student.school || 'THPT Trần Phú';
+
+  if(APP.student.name && APP.student.class){
+    showRegStatus('ok', '✅ Đã lưu thông tin: ' + APP.student.name + ' – ' + APP.student.class + ' – ' + APP.student.school);
+  }
+}
+
+function persist(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(APP)); }
+  catch(e){ console.warn('Lỗi lưu dữ liệu:', e); }
+}
+
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function nowStr(){ return new Date().toLocaleString('vi-VN'); }
+
+/* --- Lời nhắc nhở lịch sự trước khi làm bài --- */
+function requireRegistration(){
+  if(APP.student.name && APP.student.class) return true;
+  alert('💡 Nhắc nhở nhẹ nhàng!\n\nBạn hãy lưu lại "Họ tên" và "Lớp" ở mục "BƯỚC 1 · Lưu lại thông tin học sinh" trước khi làm bài nhé.\n\nThông tin này giúp thầy Trung theo dõi và đánh giá kết quả học tập của bạn.');
+  // Chuyển về tab dashboard và scroll tới form
+  document.querySelectorAll('#mainTabs button').forEach(b=>b.classList.toggle('active', b.dataset.tab==='dashboard'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active', p.id==='tab-dashboard'));
+  const hero = document.getElementById('regHero');
+  if(hero) hero.scrollIntoView({behavior:'smooth', block:'center'});
+  document.getElementById('inpName').focus();
+  return false;
+}
+
+function showRegStatus(type, msg){
+  const el = document.getElementById('regStatus');
+  el.className = 'reg-status ' + (type==='ok' ? 'ok' : 'err');
+  el.textContent = msg;
+}
+
+/* --- Thêm lịch sử --- */
+function addHistory(skill, activity, result, band){
+  APP.history.unshift({ time: nowStr(), skill, activity, result, band: band||null });
+  if(APP.history.length > 200) APP.history = APP.history.slice(0,200);
+  persist();
+  renderHistory();
+  renderStats();
+}
+
+/* ============================================================
+   1. LƯU THÔNG TIN HỌC SINH
+   ============================================================ */
+function saveStudent(){
+  const name = document.getElementById('inpName').value.trim();
+  const cls  = document.getElementById('inpClass').value.trim();
+  const school = document.getElementById('inpSchool').value.trim();
+
+  if(!name || !cls){
+    showRegStatus('err', '💡 Bạn hãy nhập Họ tên và Lớp để thầy Trung lưu lại kết quả nhé (trường mặc định THPT Trần Phú).');
+    document.getElementById('inpName').focus();
+    return;
+  }
+  if(name.length < 2){
+    showRegStatus('err', '💡 Họ tên hơi ngắn, bạn kiểm tra lại giúp thầy nhé.');
+    return;
+  }
+
+  APP.student = { name, class: cls, school: school || 'THPT Trần Phú' };
+  persist();
+  showRegStatus('ok', '✅ Đã lưu: ' + name + ' – ' + cls + ' – ' + (school || 'THPT Trần Phú'));
+  renderStats();
+  // Hiệu ứng chúc mừng nhẹ
+  const hero = document.getElementById('regHero');
+  hero.style.transition = 'box-shadow .4s';
+  hero.style.boxShadow = '0 0 0 4px rgba(30,123,76,.35), 0 8px 24px rgba(212,160,23,.22)';
+  setTimeout(()=>{ hero.style.boxShadow = ''; }, 1200);
+}
+
+/* ============================================================
+   2. RENDER THỐNG KÊ / LỊCH SỬ / ĐÁNH GIÁ
+   ============================================================ */
+function renderStats(){
+  // Streak
+  const dates = [...new Set(APP.checkins)].sort().reverse();
+  let streak = 0;
+  if(dates.length){
+    let d = new Date();
+    for(let i=0;i<400;i++){
+      const ds = d.toISOString().slice(0,10);
+      if(dates.includes(ds)){ streak++; d.setDate(d.getDate()-1); }
+      else break;
+    }
+  }
+  const setText = (id,val) => { const el=document.getElementById(id); if(el) el.textContent = val; };
+  setText('statStreak', streak);
+  setText('statTotalSessions', APP.history.length);
+  setText('statWords', APP.vocab.length);
+
+  // Band trung bình
+  const bands = [];
+  if(APP.listeningScore != null) bands.push(scoreToBand(APP.listeningScore, 40));
+  if(APP.readingScore   != null) bands.push(scoreToBand(APP.readingScore, 40));
+  if(APP.writingBand    != null) bands.push(APP.writingBand);
+  if(APP.speakingBand   != null) bands.push(APP.speakingBand);
+  const avg = bands.length ? bands.reduce((a,b)=>a+b,0)/bands.length : null;
+  setText('statAvgBand', avg ? roundBand(avg).toFixed(1) : '—');
+
+  // Bảng kỹ năng
+  setSkillRow('Listening', APP.listeningScore != null ? scoreToBand(APP.listeningScore,40) : null);
+  setSkillRow('Reading',   APP.readingScore   != null ? scoreToBand(APP.readingScore,40)   : null);
+  setSkillRow('Writing',   APP.writingBand);
+  setSkillRow('Speaking',  APP.speakingBand);
+
+  renderEvaluation();
+}
+
+function setSkillRow(skill, band){
+  const lastEl = document.getElementById('last'+skill);
+  const statusEl = document.getElementById('status'+skill);
+  if(!lastEl) return;
+  if(band == null){
+    lastEl.textContent = '—';
+    statusEl.innerHTML = '<span class="tag">Chưa có dữ liệu</span>';
+    return;
+  }
+  const cls = band>=6.5 ? 'band-65' : band>=6 ? 'band-6' : 'band-5';
+  lastEl.innerHTML = '<span class="band-badge '+cls+'">'+roundBand(band).toFixed(1)+'</span>';
+  statusEl.innerHTML = band >= 6.5
+    ? '<span style="color:var(--success);font-weight:700;">✅ Đạt mục tiêu</span>'
+    : '<span style="color:var(--warning);font-weight:700;">⚠️ Cần cải thiện</span>';
+}
+
+/* Quy đổi điểm /40 → band (bảng tham khảo IELTS Academic) */
+function scoreToBand(score, total){
+  const pct = score/total;
+  if(pct >= 0.89) return 8.0;
+  if(pct >= 0.84) return 7.5;
+  if(pct >= 0.77) return 7.0;
+  if(pct >= 0.70) return 6.5;
+  if(pct >= 0.60) return 6.0;
+  if(pct >= 0.50) return 5.5;
+  if(pct >= 0.40) return 5.0;
+  return 4.5;
+}
+function roundBand(b){ return Math.round(b*2)/2; }
+
+function renderHistory(){
+  const tbody = document.getElementById('historyBody');
+  if(!tbody) return;
+  if(!APP.history.length){
+    tbody.innerHTML = '<tr><td colspan="4" class="muted">Chưa có lịch sử.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = APP.history.slice(0,30).map(h =>
+    '<tr><td style="font-size:.78rem;white-space:nowrap;">'+h.time+'</td><td>'+h.skill+'</td><td>'+h.activity+'</td><td>'+(h.result||'')+(h.band?' · Band '+roundBand(h.band).toFixed(1):'')+'</td></tr>'
+  ).join('');
+}
+
+function renderEvaluation(){
+  const box = document.getElementById('evaluationBox');
+  if(!box) return;
+  const bands = [];
+  if(APP.listeningScore != null) bands.push({skill:'Listening', b:scoreToBand(APP.listeningScore,40)});
+  if(APP.readingScore   != null) bands.push({skill:'Reading',   b:scoreToBand(APP.readingScore,40)});
+  if(APP.writingBand    != null) bands.push({skill:'Writing',   b:APP.writingBand});
+  if(APP.speakingBand   != null) bands.push({skill:'Speaking',  b:APP.speakingBand});
+
+  if(!bands.length){
+    box.innerHTML = '<p class="muted">Chưa có đủ dữ liệu. Hãy hoàn thành ít nhất một bài luyện ở mỗi kỹ năng để nhận đánh giá.</p>';
+    return;
+  }
+  const avg = bands.reduce((s,x)=>s+x.b,0)/bands.length;
+  const weak = bands.filter(x => x.b < 6.5).map(x=>x.skill);
+  let html = '<p style="font-size:.9rem;">Band trung bình ước tính: <strong style="font-size:1.2rem;color:var(--navy);">'+roundBand(avg).toFixed(1)+'</strong></p>';
+  if(weak.length){
+    html += '<p style="font-size:.84rem;color:var(--warning);margin-top:6px;">⚠️ Kỹ năng cần ưu tiên: <strong>'+weak.join(', ')+'</strong>. Hãy dành thêm 15–20 phút/ngày cho các kỹ năng này.</p>';
+  }else{
+    html += '<p style="font-size:.84rem;color:var(--success);margin-top:6px;">🎉 Tất cả kỹ năng đã đạt 6.5! Hãy duy trì và hướng tới 7.0.</p>';
+  }
+  html += '<p style="font-size:.8rem;color:var(--muted);margin-top:8px;">Đánh giá dựa trên điểm số bạn đã lưu. Writing/Speaking do AI ước tính, có thể chênh lệch so với giám khảo thật.</p>';
+  box.innerHTML = html;
+}
+
+/* ============================================================
+   3. TIMER DÙNG CHUNG
+   ============================================================ */
+const timers = {};
+function formatTime(s){
+  const m = Math.floor(s/60), sec = s%60;
+  return (m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;
+}
+function startTimer(id, seconds){
+  if(timers[id]) clearInterval(timers[id]);
+  const el = document.getElementById(id);
+  if(!el) return;
+  let remain = seconds;
+  el.textContent = formatTime(remain);
+  timers[id] = setInterval(()=>{
+    remain--;
+    if(remain <= 0){
+      clearInterval(timers[id]);
+      el.textContent = '⏰ Hết giờ!';
+      return;
+    }
+    el.textContent = formatTime(remain);
+  },1000);
+}
+function resetTimer(id, seconds){
+  if(timers[id]) clearInterval(timers[id]);
+  const el = document.getElementById(id);
+  if(el) el.textContent = formatTime(seconds);
+}
+
+/* ============================================================
+   4. CHECK-IN
+   ============================================================ */
+function markTodayDone(){
+  const t = todayStr();
+  if(!APP.checkins.includes(t)){ APP.checkins.push(t); persist(); }
+  renderStats();
+  const box = document.getElementById('reminderBox');
+  if(box) box.querySelector('span').innerHTML = '🎉 <strong>Tuyệt vời!</strong> Bạn đã check-in hôm nay. Hãy duy trì chuỗi ngày luyện tập để đạt 6.5+.';
+}
+
+/* ============================================================
+   5. NGHE
+   ============================================================ */
+const listenQuestionsData = [
+  { id:'q1', label:'Customer surname',      answer:'Webb' },
+  { id:'q2', label:'Phone number',          answer:'07982 431 776' },
+  { id:'q3', label:'Membership type',       answer:'standard' },
+  { id:'q4', label:'Contract length',       answer:'12 months' },
+  { id:'q5', label:'Start date',            answer:'1 September' },
+  { id:'q6', label:'Class chosen',          answer:'yoga' },
+  { id:'q7', label:"Trainer's first name",  answer:'Sarah' },
+  { id:'q8', label:'Total cost',            answer:'£450' },
+];
+
+function renderListening(){
+  const box = document.getElementById('listenQuestions');
+  if(!box) return;
+  box.innerHTML = listenQuestionsData.map((q,i) =>
+    '<div class="exercise" style="margin:8px 0;padding:10px 12px;">'+
+      '<div class="q-text" style="font-size:.84rem;">'+(i+1)+'. '+q.label+': '+
+      '<input type="text" id="'+q.id+'" placeholder="Nhập đáp án..." style="max-width:220px;margin-left:8px;font-size:.82rem;">'+
+      '</div></div>'
+  ).join('');
+}
+
+function checkListening(){
+  if(!requireRegistration()) return;
+  let correct = 0;
+  listenQuestionsData.forEach(q => {
+    const input = document.getElementById(q.id);
+    if(!input) return;
+    const val = (input.value||'').trim().toLowerCase().replace(/\s+/g,' ');
+    const ans = q.answer.toLowerCase().replace(/\s+/g,' ');
+    if(val === ans){ correct++; input.style.borderColor='var(--success)'; input.style.background='#eef7f1'; }
+    else{ input.style.borderColor='var(--danger)'; input.style.background='#fdf0f0'; }
+  });
+  const band = scoreToBand(correct, 8);
+  APP.listeningScore = Math.round((correct/8)*40);
+  persist();
+  document.getElementById('listenResult').innerHTML =
+    '<div class="feedback '+(correct>=6?'correct':'wrong')+'">✅ Đúng '+correct+'/8 câu · Band ước tính: '+roundBand(band).toFixed(1)+'</div>'+
+    '<p class="muted mt-8" style="font-size:.8rem;">Đáp án: '+listenQuestionsData.map(q=>q.answer).join(' · ')+'</p>';
+  addHistory('Listening','Section 1 · Form Completion', correct+'/8 đúng', band);
+}
+
+/* ============================================================
+   6. ĐỌC
+   ============================================================ */
+const readQuestionsData = [
+  { text:'Coffee was discovered in Ethiopia by a goat herder named Kaldi.', answer:'T' },
+  { text:'Coffee was first cultivated in Europe.',                          answer:'F' },
+  { text:'By the 15th century, coffee was traded across the Middle East.',  answer:'T' },
+  { text:'Pope Clement VIII banned coffee in Europe.',                      answer:'F' },
+  { text:'Coffee houses became centres for social and intellectual activity.', answer:'T' },
+];
+
+function renderReading(){
+  const box = document.getElementById('readQuestions');
+  if(!box) return;
+  box.innerHTML = readQuestionsData.map((q,i) =>
+    '<div class="exercise" style="margin:8px 0;padding:10px 12px;">'+
+      '<div class="q-text" style="font-size:.84rem;">'+(i+1)+'. '+q.text+'</div>'+
+      '<select id="readQ'+i+'" style="padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-family:inherit;">'+
+        '<option value="">-- Chọn --</option><option value="T">True</option><option value="F">False</option><option value="NG">Not Given</option>'+
+      '</select></div>'
+  ).join('');
+}
+
+function checkReading(){
+  if(!requireRegistration()) return;
+  let correct = 0;
+  readQuestionsData.forEach((q,i) => {
+    const sel = document.getElementById('readQ'+i);
+    if(!sel) return;
+    if(sel.value === q.answer) correct++;
+    sel.style.borderColor = sel.value === q.answer ? 'var(--success)' : 'var(--danger)';
+  });
+  const band = scoreToBand(correct, 5);
+  APP.readingScore = Math.round((correct/5)*40);
+  persist();
+  document.getElementById('readResult').innerHTML =
+    '<div class="feedback '+(correct>=4?'correct':'wrong')+'">✅ Đúng '+correct+'/5 câu · Band ước tính: '+roundBand(band).toFixed(1)+'</div>'+
+    '<p class="muted mt-8" style="font-size:.8rem;">Đáp án: '+readQuestionsData.map(q=>q.answer).join(' · ')+'</p>';
+  addHistory('Reading','True/False/Not Given', correct+'/5 đúng', band);
+}
+
+/* ============================================================
+   7. VIẾT
+   ============================================================ */
+function updateWordCount(){
+  const text = document.getElementById('writingInput').value.trim();
+  const count = text ? text.split(/\s+/).length : 0;
+  const el = document.getElementById('wordCount');
+  el.textContent = 'Số từ: '+count+' / 250 tối thiểu';
+  el.style.color = count >= 250 ? 'var(--success)' : 'var(--muted)';
+}
+
+function submitWriting(){
+  if(!requireRegistration()) return;
+  const text = document.getElementById('writingInput').value.trim();
+  const count = text ? text.split(/\s+/).length : 0;
+  if(count < 100){ alert('Bài viết hơi ngắn, bạn hãy viết thêm nhé (mục tiêu ≥ 250 từ).'); return; }
+
+  let band = 5.5;
+  if(count >= 250) band += 0.5;
+  if(count >= 300) band += 0.25;
+  const sentences = text.split(/[.!?]+/).filter(s=>s.trim().length>10);
+  const avgLen = count / Math.max(sentences.length,1);
+  if(avgLen > 12 && avgLen < 28) band += 0.25;
+  band = Math.min(roundBand(band), 7.5);
+
+  APP.writingBand = band;
+  persist();
+  document.getElementById('writingResult').innerHTML =
+    '<div class="feedback info">📊 Band ước tính: <strong>'+roundBand(band).toFixed(1)+'</strong> · Số từ: '+count+'</div>'+
+    '<p class="muted mt-8" style="font-size:.8rem;">Đây là ước tính tự động dựa trên độ dài và cấu trúc câu. Để có đánh giá chính xác theo 4 tiêu chí, hãy nhờ giáo viên chấm.</p>';
+  addHistory('Writing','Task 2 · Opinion Essay', count+' từ', band);
+}
+
+/* ============================================================
+   8. NÓI
+   ============================================================ */
+function recordSpeaking(part){
+  if(!requireRegistration()) return;
+  const band = roundBand(6.0 + Math.random()*0.5);
+  APP.speakingBand = band;
+  persist();
+  addHistory('Speaking', part+' · Luyện nói', 'Đã luyện nói', band);
+  alert('✅ Đã ghi nhận luyện nói '+part+'.\nBand ước tính: '+band.toFixed(1)+'\n(Trong bản demo, audio không được lưu thật.)');
+}
+
+/* ============================================================
+   9. ĐỀ THI THỬ
+   ============================================================ */
+const mockTests = [
+  {
+    name:'Đề 1 · Cambridge IELTS 16 – Test 2',
+    listening: { note:'Sử dụng audio từ Cambridge IELTS 16 Test 2. Học sinh làm trên giấy/PDF gốc, sau đó nhập điểm.' },
+    reading:   { note:'Passage 1–3 theo chuẩn Academic. Thời gian 60 phút.' },
+    writing: { task1:'The chart below shows the percentage of households with access to the Internet in three countries between 2000 and 2020.', task2:'Some people think that all university students should study whatever they like. Others believe that they should only be allowed to study subjects that will be useful in the future, such as science and technology. Discuss both these views and give your own opinion.' },
+    speaking:{ part1:'Where is your hometown?', part2:'Describe a skill you learned that was difficult at first.', part3:'Why do some skills take longer to learn than others?' }
+  },
+  {
+    name:'Đề 2 · Cambridge IELTS 17 – Test 1',
+    listening: { note:'Audio và đề gốc trong Cambridge IELTS 17 Test 1.' },
+    reading:   { note:'Academic Reading · 60 phút.' },
+    writing: { task1:'The diagram shows the process by which milk and related products are produced.', task2:'Some people believe that unpaid community service should be a compulsory part of high school programmes. To what extent do you agree or disagree?' },
+    speaking:{ part1:'Do you work or are you a student?', part2:'Describe a time when you helped someone.', part3:'Do you think people today are more or less willing to help others than in the past?' }
+  },
+  {
+    name:'Đề 3 · IDP Official Practice Test',
+    listening: { note:'IDP Official Practice Test – Listening có đáp án PDF.' },
+    reading:   { note:'IDP Academic Reading Practice Test.' },
+    writing: { task1:'The table below gives information about the underground railway systems in six cities.', task2:'In some countries, more and more people are becoming interested in finding out about the history of the house or building they live in. What are the reasons for this? How can people research this?' },
+    speaking:{ part1:'What do you like to do in your free time?', part2:'Describe an important decision you made recently.', part3:'Should young people make important decisions on their own?' }
+  }
+];
+
+function renderMockTabs(){
+  const container = document.getElementById('mockTabs');
+  if(!container) return;
+  container.innerHTML = mockTests.map((t,i) =>
+    '<button class="'+(i===0?'active':'')+'" onclick="selectMock('+i+')">'+t.name+'</button>'
+  ).join('');
+}
+
+function selectMock(index){
+  document.querySelectorAll('#mockTabs button').forEach((b,i)=>b.classList.toggle('active', i===index));
+  const t = mockTests[index];
+  const box = document.getElementById('mockContent');
+  if(!box) return;
+  box.innerHTML = `
+    <div class="card">
+      <h2>🎧 Listening</h2>
+      <p class="muted">${t.listening.note}</p>
+      <div class="exercise">
+        <label>Nhập số câu đúng /40:</label>
+        <input type="number" id="mockListenScore" min="0" max="40" style="max-width:100px;margin-left:10px;" value="${APP.mockListenScore!=null?APP.mockListenScore:''}">
+        <button class="btn btn-sm btn-primary" onclick="saveMockScore('listening')">Lưu điểm</button>
+        <span id="mockListenBand" class="muted" style="margin-left:10px;"></span>
+      </div>
+    </div>
+    <div class="card">
+      <h2>📖 Reading</h2>
+      <p class="muted">${t.reading.note}</p>
+      <div class="exercise">
+        <label>Nhập số câu đúng /40:</label>
+        <input type="number" id="mockReadScore" min="0" max="40" style="max-width:100px;margin-left:10px;" value="${APP.mockReadScore!=null?APP.mockReadScore:''}">
+        <button class="btn btn-sm btn-primary" onclick="saveMockScore('reading')">Lưu điểm</button>
+        <span id="mockReadBand" class="muted" style="margin-left:10px;"></span>
+      </div>
+    </div>
+    <div class="card">
+      <h2>✍️ Writing</h2>
+      <h3>Task 1 (20 phút · ≥150 từ)</h3>
+      <p style="font-size:.88rem;">${t.writing.task1}</p>
+      <h3>Task 2 (40 phút · ≥250 từ)</h3>
+      <p style="font-size:.88rem;">${t.writing.task2}</p>
+      <div class="exercise">
+        <label>Band Writing (tự đánh giá hoặc giáo viên chấm):</label>
+        <input type="number" id="mockWritingBand" min="4" max="9" step="0.5" style="max-width:100px;margin-left:10px;" value="${APP.writingBand!=null?APP.writingBand:''}">
+        <button class="btn btn-sm btn-primary" onclick="saveMockBand('writing')">Lưu band</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>🗣️ Speaking</h2>
+      <p><strong>Part 1:</strong> ${t.speaking.part1}</p>
+      <p><strong>Part 2:</strong> ${t.speaking.part2}</p>
+      <p><strong>Part 3:</strong> ${t.speaking.part3}</p>
+      <div class="exercise">
+        <label>Band Speaking (tự đánh giá hoặc giáo viên chấm):</label>
+        <input type="number" id="mockSpeakingBand" min="4" max="9" step="0.5" style="max-width:100px;margin-left:10px;" value="${APP.speakingBand!=null?APP.speakingBand:''}">
+        <button class="btn btn-sm btn-primary" onclick="saveMockBand('speaking')">Lưu band</button>
+      </div>
+    </div>
+  `;
+  if(APP.mockListenScore != null){
+    const el = document.getElementById('mockListenBand');
+    if(el) el.textContent = '≈ Band '+roundBand(scoreToBand(APP.mockListenScore,40)).toFixed(1);
+  }
+  if(APP.mockReadScore != null){
+    const el = document.getElementById('mockReadBand');
+    if(el) el.textContent = '≈ Band '+roundBand(scoreToBand(APP.mockReadScore,40)).toFixed(1);
+  }
+}
+
+function saveMockScore(skill){
+  if(!requireRegistration()) return;
+  const id = skill==='listening' ? 'mockListenScore' : 'mockReadScore';
+  const val = parseInt(document.getElementById(id).value);
+  if(isNaN(val) || val<0 || val>40){ alert('Bạn nhập số từ 0–40 giúp thầy nhé.'); return; }
+  if(skill==='listening') APP.mockListenScore = val;
+  else APP.mockReadScore = val;
+  persist();
+  const band = scoreToBand(val,40);
+  const bandEl = document.getElementById(skill==='listening' ? 'mockListenBand' : 'mockReadBand');
+  if(bandEl) bandEl.textContent = '≈ Band '+roundBand(band).toFixed(1);
+  addHistory(skill==='listening' ? 'Listening' : 'Reading', 'Mock Test', val+'/40', band);
+}
+
+function saveMockBand(skill){
+  if(!requireRegistration()) return;
+  const id = skill==='writing' ? 'mockWritingBand' : 'mockSpeakingBand';
+  const val = parseFloat(document.getElementById(id).value);
+  if(isNaN(val) || val<4 || val>9){ alert('Bạn nhập band từ 4.0–9.0 giúp thầy nhé.'); return; }
+  if(skill==='writing') APP.writingBand = roundBand(val);
+  else APP.speakingBand = roundBand(val);
+  persist();
+  addHistory(skill==='writing' ? 'Writing' : 'Speaking', 'Mock Test', 'Band '+roundBand(val).toFixed(1), roundBand(val));
+}
+
+/* ============================================================
+   10. TỪ VỰNG
+   ============================================================ */
+function addVocab(){
+  if(!requireRegistration()) return;
+  const inp = document.getElementById('vocabInput');
+  const word = inp.value.trim();
+  if(!word) return;
+  APP.vocab.push({ word, date: nowStr() });
+  persist();
+  inp.value = '';
+  renderVocab();
+  renderStats();
+}
+
+function renderVocab(){
+  const box = document.getElementById('vocabList');
+  if(!box) return;
+  if(!APP.vocab.length){ box.innerHTML = '<span class="muted">Chưa có từ nào.</span>'; return; }
+  box.innerHTML = APP.vocab.slice(-10).reverse().map(v =>
+    '<span class="tag" style="margin:3px 0;">'+v.word+'</span>'
+  ).join('');
+}
+
+/* ============================================================
+   11. LUYỆN HÀNG NGÀY
+   ============================================================ */
+const dailyBank = [
+  { skill:'Speaking Part 1', q:'What kind of music do you like?', type:'text' },
+  { skill:'Speaking Part 2', q:'Describe a book you enjoyed reading.', type:'text' },
+  { skill:'Writing Task 2', q:'Some people think that online learning is as effective as traditional classroom learning. To what extent do you agree or disagree?', type:'textarea' },
+  { skill:'Writing Task 2', q:'Many cities are facing traffic congestion. What are the causes and what solutions can you suggest?', type:'textarea' },
+  { skill:'Reading', q:'Summarise the main idea of a recent article you read in English (3–4 sentences).', type:'textarea' },
+  { skill:'Listening', q:'Listen to a 2-minute BBC 6 Minute English episode and write down 5 new words/phrases you heard.', type:'textarea' },
+];
+
+function newDailyQuestion(){
+  const item = dailyBank[Math.floor(Math.random()*dailyBank.length)];
+  const qEl = document.getElementById('dailyQuestion');
+  if(qEl) qEl.textContent = '['+item.skill+'] '+item.q;
+  const area = document.getElementById('dailyAnswerArea');
+  if(!area) return;
+  if(item.type === 'text'){
+    area.innerHTML = '<input type="text" id="dailyAnswer" placeholder="Câu trả lời của bạn..." style="width:100%;padding:9px;border:1.5px solid var(--border);border-radius:8px;margin:8px 0;font-family:inherit;">'+
+      '<button class="btn btn-sm btn-primary" onclick="saveDaily()">Lưu câu trả lời</button>';
+  }else{
+    area.innerHTML = '<textarea id="dailyAnswer" rows="4" placeholder="Viết câu trả lời..." style="width:100%;padding:9px;border:1.5px solid var(--border);border-radius:8px;margin:8px 0;font-family:inherit;"></textarea>'+
+      '<button class="btn btn-sm btn-primary" onclick="saveDaily()">Lưu câu trả lời</button>';
+  }
+}
+
+function saveDaily(){
+  if(!requireRegistration()) return;
+  const ansEl = document.getElementById('dailyAnswer');
+  if(!ansEl) return;
+  const ans = ansEl.value.trim();
+  if(!ans){ alert('Bạn hãy nhập câu trả lời giúp thầy nhé.'); return; }
+  const q = document.getElementById('dailyQuestion').textContent;
+  addHistory('Daily', q.slice(0,60)+'...', 'Đã lưu', null);
+  alert('✅ Đã lưu câu trả lời hàng ngày!');
+}
+
+/* ============================================================
+   12. CHECKLIST
+   ============================================================ */
+function saveChecklist(){
+  const checked = [];
+  document.querySelectorAll('#checklistBox input[type="checkbox"]').forEach(cb=>{
+    if(cb.checked) checked.push(cb.dataset.task);
+  });
+  if(checked.length) markTodayDone();
+  alert('✅ Đã lưu checklist hôm nay ('+checked.length+'/4 mục).');
+}
+
+/* ============================================================
+   13. XUẤT / XOÁ DỮ LIỆU
+   ============================================================ */
+function exportData(){
+  const blob = new Blob([JSON.stringify(APP,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'ielts_tranphu_'+(APP.student.name||'hocsinh')+'.json';
+  a.click();
+}
+
+function clearData(){
+  if(!confirm('Xoá toàn bộ dữ liệu? Hành động này không thể hoàn tác.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+}
+
+/* ============================================================
+   14. CHUYỂN TAB & KHỞI TẠO
+   ============================================================ */
+document.getElementById('mainTabs').addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  const tab = btn.dataset.tab;
+  document.querySelectorAll('#mainTabs button').forEach(b=>b.classList.toggle('active', b===btn));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active', p.id==='tab-'+tab));
+  if(tab==='listening') renderListening();
+  if(tab==='reading')   renderReading();
+  if(tab==='mocktests'){ renderMockTabs(); selectMock(0); }
+  if(tab==='daily')     newDailyQuestion();
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+/* --- Khởi tạo --- */
+(function init(){
+  loadData();               // đọc localStorage & khôi phục form
+  renderListening();
+  renderReading();
+  renderMockTabs();
+  selectMock(0);
+  renderVocab();
+  renderHistory();
+  renderStats();
+  newDailyQuestion();
+
+  // Khôi phục checkbox nếu hôm nay đã check-in
+  if(APP.checkins.includes(todayStr())){
+    document.querySelectorAll('#checklistBox input').forEach(cb=>cb.checked=true);
+  }
+})();
+</script>
+</body>
+</html>
